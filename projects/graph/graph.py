@@ -124,27 +124,28 @@ class Graph:
 
                 
 
-    # def dfs(self, starting_vertex, destination_vertex):
-    #     """
-    #     Return a list containing a path from
-    #     starting_vertex to destination_vertex in
-    #     depth-first order.
-    #     """
-    #     s = Stack()
-    #     s.push([starting_vertex])
-    #     visited = set()
+    def dfs(self, starting_vertex, destination_vertex):
+        """
+        Return a list containing a path from
+        starting_vertex to destination_vertex in
+        depth-first order.
+        """
+        s = Stack()
+        s.push([starting_vertex])
+        visited = set()
 
-    #     while s.size() > 0:
-    #         path = s.pop()
-    #         last = path[-1]
-    #         if last not in visited:
-    #             if last == destination_vertex:
-    #                 return path
-    #             else:
-    #                 visited.add(last)
-    #         for neighbor in self.get_neighbors(last):
-    #             new_path = 
-    #             new_path.append(neighbor)
+        while s.size() > 0:
+            path = s.pop()
+            last = path[-1]
+            if last not in visited:
+                if last == destination_vertex:
+                    return path
+                else:
+                    visited.add(last)
+            for neighbor in self.get_neighbors(last):
+                new_path = path.copy()
+                new_path.append(neighbor)
+                s.push(new_path)
             
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
@@ -222,5 +223,5 @@ if __name__ == '__main__':
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
-    # print(graph.dfs(1, 6))
+    print(graph.dfs(1, 6))
     # print(graph.dfs_recursive(1, 6))
