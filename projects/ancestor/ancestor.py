@@ -15,15 +15,14 @@ def earliest_ancestor(ancestors, starting_node):
     g = Graph()
     paths = []
 
-    # add nodes + edges to graph
-    for nodes in ancestors:
-        for vert in nodes:
-            # if verts not in graph
-            if vert not in g.vertices:
-                # add them
-                g.add_vertex(vert)
-        # add edge for a directed graph
-        g.add_edge(nodes[1], nodes[0])
+    # add all vertexes from our ancestors list
+    for i in ancestors:
+        g.add_vertex(i[0])
+        g.add_vertex(i[1])
+    
+    # add all edges in our graph
+    for edge in ancestors:
+        g.add_edge(edge[1], edge[0])
     
     # After graph complete, BFT
     # Create empty queue
